@@ -1,0 +1,13 @@
+spring:
+    main:
+        banner-mode: "off"
+---
+spring: 
+  profiles.active: dev
+server:
+    address: 0.0.0.0
+    port: 9090   
+logging:
+  config: classpath:logback-dev.xml  
+service:
+  url: http://localhost:9000/demo/service?wsdl

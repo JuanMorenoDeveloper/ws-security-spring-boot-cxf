@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- PROPERTIES -->
+	<property name="appenderRoot" value="CONSOLE" />
+	<property name="logFilePath" value="logs" />
+	<property name="logFileName" value="ws-security-client" />
+	<property name="patternRelativeThread"
+		value="%-4relative [%thread] %-5level %logger{35} - %msg%n" />
+	<property name="patternCommon" value="%d %5p %40.40c:%4L - %m%n" />
+	<!-- APPENDERS -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>${patternCommon}</pattern>
+		</layout>
+	</appender>
+	<!-- LOGGERS -->
+	<!-- Levels -->
+	<property name="levelApp" value="INFO" />
+	<property name="levelFrame" value="INFO" />
+	<property name="levelRoot" value="INFO" />
+	<!-- Applicación -->
+	<logger name="com.accsa" level="${levelApp}" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<!-- Spring Framework -->
+	<logger name="org.springframework" level="${levelFrame}"
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<!-- CXF -->
+	<logger name="org.apache.cxf" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root level="${levelApp}">
+		<appender-ref ref="${appenderRoot}" />
+	</root>
+</configuration>
